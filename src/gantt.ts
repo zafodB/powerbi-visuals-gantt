@@ -143,6 +143,7 @@ import {
     hashCode
 } from "./utils";
 import { drawExpandButton, drawCollapseButton, drawMinusButton, drawPlusButton } from "./drawButtons";
+import { rgb } from "d3";
 
 const PercentFormat: string = "0.00 %;-0.00 %;0.00 %";
 const ScrollMargin: number = 100;
@@ -332,9 +333,10 @@ export class Gantt implements IVisual {
     private static LabelTopOffsetForPadding: number = 0.5;
     private static DeviderForCalculatingCenter: number = 2;
     private static SubtasksLeftMargin: number = 10;
-    private static NotCompletedTaskOpacity: number = .5;
+    private static NotCompletedTaskOpacity: number = 1;
     private static TaskOpacity: number = 1;
     private static RectRound: number = 7;
+    private static CompletionColor: string;
 
     private static get DefaultMargin(): IMargin {
         return {
@@ -866,6 +868,8 @@ export class Gantt implements IVisual {
         let taskProgressShow: boolean = settings.taskCompletion.show;
 
         let endDate: Date = null;
+
+        this.CompletionColor = settings.taskCompletion.completionColor;
 
         values.Task.forEach((categoryValue: PrimitiveValue, index: number) => {
             let color: string = taskColor || Gantt.DefaultValues.TaskColor;
@@ -2497,8 +2501,7 @@ export class Gantt implements IVisual {
      * Render task progress rect
      * @param taskSelection Task Selection
      */
-    private taskProgressRender(
-        taskSelection: Selection<Task>): void {
+    private taskProgressRender(taskSelection: Selection<Task>): void {
         const taskProgressShow: boolean = this.viewModel.settings.taskCompletion.show;
 
         let index = 0, groupedTaskIndex = 0;
@@ -2521,8 +2524,8 @@ export class Gantt implements IVisual {
                     key: encodedUrl, values: <LinearStop[]>[
                         { completion: 0, color: d.color },
                         { completion: taskProgressPercentage, color: d.color },
-                        { completion: taskProgressPercentage, color: d.color },
-                        { completion: 1, color: d.color }
+                        { completion: taskProgressPercentage, color: Gantt.CompletionColor},
+                        { completion: 1, color: Gantt.CompletionColor }
                     ]
                 }];
             });

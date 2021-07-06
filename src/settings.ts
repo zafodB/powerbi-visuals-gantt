@@ -89,6 +89,7 @@ export class TaskConfigSettings {
 export class TaskCompletionSettings {
     show: boolean = true;
     maxCompletion: number = null;
+    completionColor: string = "#ff0000"
 }
 
 export class TaskResourceSettings {

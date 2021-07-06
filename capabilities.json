@@ -689,6 +689,19 @@
                     "type": {
                         "numeric": true
                     }
+                },
+                "completionColor": {
+                    "displayName": "Completion color",
+                    "displayNameKey": "Visual_CompletionColor",
+                    "description": "Completion color",
+                    "descriptionKey": "Visual_Description_CompletionColor",
+                    "type": {
+                        "fill":{
+                            "solid":{
+                                "color": true
+                            }
+                        }
+                    }
                 }
             }
         },
