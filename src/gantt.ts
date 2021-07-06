@@ -575,26 +575,30 @@ export class Gantt implements IVisual {
         let tooltipDataArray: VisualTooltipDataItem[] = [];
         if (task.taskType) {
             tooltipDataArray.push({
-                displayName: localizationManager.getDisplayName("Role_Legend"),
+                // displayName: localizationManager.getDisplayName("Role_Legend"),
+                displayName: "Logger Type",
                 value: task.taskType
             });
         }
 
         tooltipDataArray.push({
-            displayName: localizationManager.getDisplayName("Role_Task"),
+            // displayName: localizationManager.getDisplayName("Role_Task"),
+            displayName: "Logger ID",
             value: task.name
         });
 
         if (task.start && !isNaN(task.start.getDate())) {
             tooltipDataArray.push({
-                displayName: localizationManager.getDisplayName("Role_StartDate"),
+                // displayName: localizationManager.getDisplayName("Role_StartDate"),
+                displayName: "Calibration Start",
                 value: formatters.startDateFormatter.format(task.start)
             });
         }
 
         if (_.isEmpty(task.Milestones) && task.end && !isNaN(task.end.getDate())) {
             tooltipDataArray.push({
-                displayName: localizationManager.getDisplayName("Role_EndDate"),
+                // displayName: localizationManager.getDisplayName("Role_EndDate"),
+                displayName: "Calibration End",
                 value: formatters.startDateFormatter.format(task.end)
             });
         }
@@ -609,7 +613,8 @@ export class Gantt implements IVisual {
 
         if (task.completion) {
             tooltipDataArray.push({
-                displayName: localizationManager.getDisplayName("Role_Completion"),
+                // displayName: localizationManager.getDisplayName("Role_Completion"),
+                displayName: "Utilized %",
                 value: formatters.completionFormatter.format(task.completion)
             });
         }
