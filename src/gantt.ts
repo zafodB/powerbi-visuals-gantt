@@ -337,6 +337,11 @@ export class Gantt implements IVisual {
     private static TaskOpacity: number = 1;
     private static RectRound: number = 7;
     private static CompletionColor: string;
+    private static legendName: string;
+    private static taskName: string;
+    private static startName: string;
+    private static endName: string;
+    private static completionName: string;
 
     private static get DefaultMargin(): IMargin {
         return {
@@ -576,21 +581,21 @@ export class Gantt implements IVisual {
         if (task.taskType) {
             tooltipDataArray.push({
                 // displayName: localizationManager.getDisplayName("Role_Legend"),
-                displayName: "Logger Type",
+                displayName: this.legendName,
                 value: task.taskType
             });
         }
 
         tooltipDataArray.push({
             // displayName: localizationManager.getDisplayName("Role_Task"),
-            displayName: "Logger ID",
+            displayName: this.taskName,
             value: task.name
         });
 
         if (task.start && !isNaN(task.start.getDate())) {
             tooltipDataArray.push({
                 // displayName: localizationManager.getDisplayName("Role_StartDate"),
-                displayName: "Calibration Start",
+                displayName: this.startName,
                 value: formatters.startDateFormatter.format(task.start)
             });
         }
@@ -598,7 +603,7 @@ export class Gantt implements IVisual {
         if (_.isEmpty(task.Milestones) && task.end && !isNaN(task.end.getDate())) {
             tooltipDataArray.push({
                 // displayName: localizationManager.getDisplayName("Role_EndDate"),
-                displayName: "Calibration End",
+                displayName: this.endName,
                 value: formatters.startDateFormatter.format(task.end)
             });
         }
@@ -614,7 +619,7 @@ export class Gantt implements IVisual {
         if (task.completion) {
             tooltipDataArray.push({
                 // displayName: localizationManager.getDisplayName("Role_Completion"),
-                displayName: "Utilized %",
+                displayName: this.completionName,
                 value: formatters.completionFormatter.format(task.completion)
             });
         }
@@ -875,6 +880,11 @@ export class Gantt implements IVisual {
         let endDate: Date = null;
 
         this.CompletionColor = settings.taskCompletion.completionColor;
+        this.legendName = settings.tooltipConfig.legendName;
+        this.taskName = settings.tooltipConfig.taskName;
+        this.startName = settings.tooltipConfig.startName;
+        this.endName = settings.tooltipConfig.endName;
+        this.completionName = settings.tooltipConfig.completionName;
 
         values.Task.forEach((categoryValue: PrimitiveValue, index: number) => {
             let color: string = taskColor || Gantt.DefaultValues.TaskColor;

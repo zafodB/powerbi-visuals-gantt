@@ -111,4 +111,9 @@ export class DateTypeSettings {
 
 export class TooltipConfigSettings {
     dateFormat: string = null;
+    legendName: string = "Legend";
+    taskName: string = "Task";
+    startName: string = "Start Date";
+    endName: string = "End Date";
+    completionName: string = "Completed %";
 }

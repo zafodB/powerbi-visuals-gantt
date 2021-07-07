@@ -715,7 +715,43 @@
                     "type": {
                         "text": true
                     }
+                },
+                "legendName":{
+                    "displayName": "Legend Label",
+                    "displayNameKey" : "Visual_TooltipSetting_LegendLabel",
+                    "type":{
+                        "text": true
+                    }
+                },
+                "taskName":{
+                    "displayName": "Task Label",
+                    "displayNameKey" : "Visual_TooltipSetting_TaskLabel",
+                    "type":{
+                        "text": true
+                    }
+                },
+                "startName":{
+                    "displayName": "Start Label",
+                    "displayNameKey" : "Visual_TooltipSetting_StartLabel",
+                    "type":{
+                        "text": true
+                    }
+                },
+                "endName":{
+                    "displayName": "End Label",
+                    "displayNameKey" : "Visual_TooltipSetting_EndLabel",
+                    "type":{
+                        "text": true
+                    }
+                },
+                "completionName":{
+                    "displayName": "Completion Label",
+                    "displayNameKey" : "Visual_TooltipSetting_CompletionLabel",
+                    "type":{
+                        "text": true
+                    }
                 }
+
             }
         },
         "taskConfig": {
